@@ -71,11 +71,11 @@ public class RobotContainer {
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 //    joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
-    joystick.leftBumper().whileTrue(
+    joystick.leftBumper().onTrue(
                             runOnce(() -> setMaxSpeed(1))
                             .andThen(led.run(() -> led.setAll(Color.kRed)))
                                     );
-    joystick.leftBumper().whileFalse(
+    joystick.leftBumper().onFalse(
                             runOnce(() -> setMaxSpeed(6))
                             .andThen(led.run(() -> led.setAll(Color.kGreen)))
                                     );
