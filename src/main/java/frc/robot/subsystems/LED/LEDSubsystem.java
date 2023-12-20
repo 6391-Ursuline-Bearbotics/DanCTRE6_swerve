@@ -12,10 +12,10 @@ public class LEDSubsystem extends SubsystemBase {
   private final AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(LED.LENGTH);
   private int m_rainbowFirstPixelHue;
 // int[] L1;
-int[] L1 = {0,4};
-int[] L2 = {5,9};
-int[] L3 = {10,14};
-int[] L4 = {15,21};
+int[] L1 = {0,5};
+int[] L2 = {6,11};
+int[] L3 = {12,17};
+int[] L4 = {18,23};
 
 Color[] LEDcache = {Color.kBlack,Color.kBlack,Color.kBlack,Color.kBlack}; // L1, L2, L3, l4
 
@@ -72,6 +72,26 @@ Color[] LEDcache = {Color.kBlack,Color.kBlack,Color.kBlack,Color.kBlack}; // L1,
     }
     m_led.setData(m_ledBuffer);
   }
+
+public void resetColorCache() {
+for (var i = L1[0]; i < (L1[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[0]);
+    }
+for (var i = L2[0]; i < (L2[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[1]);
+    }
+for (var i = L3[0]; i < (L3[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[2]);
+    }
+for (var i = L4[0]; i < (L4[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[3]);
+    }
+for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+    }
+    m_led.setData(m_ledBuffer);
+
+}
+  
 public void setColor(String LRange, Color color){
 switch(LRange) {
 case "L1":
@@ -88,6 +108,21 @@ case "L4":
       break;
 
 }
+for (var i = L1[0]; i < (L1[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[0]);
+    }
+for (var i = L2[0]; i < (L2[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[1]);
+    }
+for (var i = L3[0]; i < (L3[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[2]);
+    }
+for (var i = L4[0]; i < (L4[1]+1); i++) {
+      m_ledBuffer.setLED(i, LEDcache[3]);
+    }
+for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+    }
+    m_led.setData(m_ledBuffer);
 }
     public void setRange(String LRange) {
       int[] LR = {0,0};

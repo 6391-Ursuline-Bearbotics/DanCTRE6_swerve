@@ -72,6 +72,10 @@ public class RobotContainer {
     joystick.rightBumper().onTrue(led.runOnce(() -> led.setColor("L2", Color.kOrange))
                     // .andThen(led.run(() -> led.rainbow()))
                     );
+    joystick.rightTrigger().onTrue(led.runOnce(() -> led.setColor("L4", Color.kMistyRose))
+                    // .andThen(led.run(() -> led.rainbow()))
+                    );
+
 
 //  joystick.x().whileTrue(led.run(() -> led.rainbow()));
     joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
@@ -87,7 +91,7 @@ public class RobotContainer {
                                     );
     joystick.leftBumper().onFalse(
                             runOnce(() -> setMaxSpeed(6))
-                            .andThen(led.run(() -> led.setAll(Color.kGreen)))
+                            .andThen(led.run(() -> led.resetColorCache()))
                                     );
 //                    new ConditionalCommand(
 //                      runOnce(() -> setMaxSpeed(1)),
