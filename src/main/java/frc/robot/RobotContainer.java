@@ -61,9 +61,19 @@ public class RobotContainer {
         ).ignoringDisable(true));
   //  frc.robot.subsystems.LED.LEDSubsystem.setAll(Color)
   // new ProxyCommand(() -> autoMap.getCommandInMap(level))
-    joystick.y().onTrue(led.runOnce(() -> led.setAll(Color.kAqua))
-                    .andThen(led.run(() -> led.rainbow())));
-    joystick.x().whileTrue(led.run(() -> led.rainbow()));
+//    joystick.y().onTrue(led.runOnce(() -> led.setAll(Color.kAqua))
+//                    .andThen(led.run(() -> led.rainbow())));
+    joystick.y().onTrue(led.runOnce(() -> led.setColor("L2", Color.kDarkOliveGreen))
+                    // .andThen(led.run(() -> led.rainbow()))
+                    );
+    joystick.x().onTrue(led.runOnce(() -> led.setRange("L2"))
+                    // .andThen(led.run(() -> led.rainbow()))
+                    );
+    joystick.rightBumper().onTrue(led.runOnce(() -> led.setColor("L2", Color.kOrange))
+                    // .andThen(led.run(() -> led.rainbow()))
+                    );
+
+//  joystick.x().whileTrue(led.run(() -> led.rainbow()));
     joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
     joystick.b().whileTrue(drivetrain
         .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
